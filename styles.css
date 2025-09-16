@@ -1,0 +1,240 @@
+:root {
+  --ink: #111;
+  --soft: #666;
+  --accent: #1256ff;
+  --accent2: #ffd200;
+  --danger: #ff6767;
+  --card: #ffffffcc;
+  --border: #0002;
+  --grid: rgba(0, 0, 0, 0.06);
+  --r: 10px;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font: 15px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: var(--ink);
+  background: #fff;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  border-bottom: 2px solid var(--border);
+}
+.brand {
+  font-weight: 800;
+}
+.controls {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn,
+.select,
+.number,
+.range {
+  font-size: 14px;
+}
+.btn {
+  border: 2px solid var(--border);
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: var(--r);
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: #0b3cd1;
+}
+.btn.danger {
+  background: #fff0f0;
+  border-color: #ffb4b4;
+}
+.number {
+  width: 64px;
+}
+.tip {
+  font-size: 12px;
+  color: var(--soft);
+}
+.beat {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dfe6ff;
+}
+.beat.on {
+  background: #7b79ff;
+  box-shadow: 0 0 0 6px rgba(123, 121, 255, 0.25);
+}
+
+.stage {
+  position: relative;
+  min-height: 65vh;
+  margin: 10px;
+  border: 2px solid var(--border);
+  border-radius: var(--r);
+  background: repeating-linear-gradient(
+      0deg,
+      var(--grid) 0,
+      var(--grid) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--grid) 0,
+      var(--grid) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+  overflow: hidden;
+}
+#bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center 80%;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* bottom hint */
+.hint {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  color: var(--soft);
+  font-size: 12px;
+}
+
+/* inspector panel */
+.panel {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: var(--card);
+  border: 2px dashed var(--border);
+  border-radius: var(--r);
+  padding: 12px;
+  width: 260px;
+}
+.panel .row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 6px 0;
+}
+.panel .label {
+  min-width: 60px;
+  color: var(--soft);
+}
+.micro {
+  font-size: 12px;
+  color: var(--soft);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-top: 2px solid var(--border);
+  color: var(--soft);
+  font-size: 12px;
+}
+
+.bottle {
+  position: absolute;
+  user-select: none;
+  touch-action: none;
+  width: 112px;
+  height: 200px;
+  transform-origin: center bottom;
+}
+.bottle .neck {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -14px;
+  width: 46px;
+  height: 24px;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: grab;
+}
+
+.bottle .neck {
+  z-index: 3;
+}
+.bottle .ring {
+  z-index: 2;
+}
+.bottle svg {
+  z-index: 1;
+}
+
+.bottle svg {
+  position: absolute;
+  inset: 0;
+}
+/* glass outline (no fill) */
+.outline {
+  fill: none;
+  stroke: #111;
+  stroke-width: 2.2;
+  vector-effect: non-scaling-stroke;
+}
+.bottle.selected .outline {
+  stroke: var(--accent);
+}
+
+/* liquid rects are clipped; colors set via JS */
+/* step ring (shows only when selected) */
+.ring {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  width: 84px;
+  height: 84px;
+  display: none;
+}
+.bottle.selected .ring {
+  display: block;
+}
+.step {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: #fff;
+  border: 2px solid var(--border);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.step.active {
+  background: var(--accent2);
+  border-color: #b79500;
+}
+.step.play {
+  box-shadow: 0 0 0 2px rgba(18, 86, 255, 0.35);
+}

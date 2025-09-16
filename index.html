@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bottle Orchestra — Playable Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Bottle Orchestra</div>
+      <span class="tip">select a bottle → click small squares</span>
+      <span
+        id="beatDot"
+        class="beat"
+        aria-hidden="true"
+        title="metronome"
+      ></span>
+
+      <div class="controls">
+        <label for="bpm">BPM</label>
+        <input
+          id="bpm"
+          class="number"
+          type="number"
+          min="40"
+          max="200"
+          value="96"
+        />
+        <button id="playBtn" class="btn">▶ Play</button>
+
+        <label for="scaleSel">Scale</label>
+        <select id="scaleSel" class="select">
+          <option value="pentatonic" selected>Pentatonic (C)</option>
+          <option value="minor">Natural Minor (A)</option>
+          <option value="whole">Whole Tone</option>
+        </select>
+
+        <button id="addBtn" class="btn">+ Add</button>
+        <button id="enableBtn" class="btn primary">Enable Sound</button>
+      </div>
+    </header>
+
+    <main
+      id="stage"
+      class="stage"
+      aria-label="Stage: grab neck to move, drag body up/down to tune"
+    >
+      <img id="bg" src="assets/bar-sketch.png" alt="bar sketch background" />
+
+      <div class="hint">
+        Grab <u>neck</u> to move • Drag bottle to tune (up=higher) • Click
+        squares to add beats
+      </div>
+
+      <aside class="panel" id="inspector" hidden>
+        <h3>Inspector</h3>
+        <div class="row">Selected: <span id="selText">—</span></div>
+
+        <div class="row">
+          <div class="label">Material</div>
+          <label><input type="radio" name="mat" value="water" />Water</label>
+          <label><input type="radio" name="mat" value="rice" />Rice</label>
+          <label><input type="radio" name="mat" value="beads" />Beads</label>
+          <label><input type="radio" name="mat" value="sand" />Sand</label>
+        </div>
+
+        <div class="row">
+          <label for="fill">Fill%</label>
+          <input
+            id="fill"
+            class="range"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+          />
+          <span id="fillVal">50%</span>
+        </div>
+
+        <div class="row">
+          <button id="seedBtn" class="btn" title="every 4th step">Seed</button>
+          <button id="clearBtn" class="btn" title="clear all steps">
+            Clear
+          </button>
+        </div>
+
+        <div class="row">
+          <button id="delBtn" class="btn danger">Delete Bottle</button>
+        </div>
+
+        <p class="micro">
+          Seed = every 4th step. Metronome flashes every quarter note.
+        </p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <div>© Bottle Orchestra (Demo). Built with Tone.js</div>
+      <div>Bottles: <span id="count">0</span>/7</div>
+    </footer>
+
+    <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
