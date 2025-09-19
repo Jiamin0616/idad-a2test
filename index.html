@@ -9,6 +9,19 @@
   <body>
     <header class="topbar">
       <div class="brand">Bottle Orchestra</div>
+      <nav class="navlinks">
+        <a class="btn" href="./index.html" target="_blank" rel="noopener"
+          >Open Prototype ↗</a
+        >
+        <a
+          class="btn"
+          href="./analysis/analysis.html"
+          target="_blank"
+          rel="noopener"
+          >Read Analysis ↗</a
+        >
+      </nav>
+
       <span class="tip">select a bottle → click small squares</span>
       <span
         id="beatDot"
@@ -27,7 +40,8 @@
           max="200"
           value="96"
         />
-        <button id="playBtn" class="btn">▶ Play</button>
+        <!-- BEFORE: <button id="playBtn" class="btn">▶ Play</button> -->
+        <button id="playBtn" class="btn cta">▶ Play</button>
 
         <label for="scaleSel">Scale</label>
         <select id="scaleSel" class="select">

@@ -1,0 +1,147 @@
+:root {
+  --ink: #111;
+  --soft: #555;
+  --muted: #888;
+  --bg: #fff;
+  --card: #fff;
+  --border: #e6e6e6;
+  --accent: #1256ff;
+  --accent2: #ffd200;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: var(--ink);
+  background: var(--bg);
+}
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.topbar h1 {
+  margin: 0;
+  font-size: 18px;
+}
+.nav .btn {
+  margin-left: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  color: var(--ink);
+}
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: #0b3cd1;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+h2 {
+  margin: 18px 0 10px;
+  font-size: 20px;
+}
+h3 {
+  margin: 12px 0 8px;
+  font-size: 16px;
+}
+p {
+  margin: 8px 0;
+}
+.refs a {
+  margin-right: 10px;
+}
+
+.callout {
+  background: #f7f9ff;
+  border: 1px solid #dfe7ff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.map {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 820px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+blockquote {
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-left: 4px solid var(--accent);
+  background: #f7f9ff;
+  color: #222;
+  border-radius: 8px;
+}
+.todo li {
+  margin: 5px 0;
+}
+.meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.foot {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding: 14px 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* optional image style */
+.shot {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 10px 0;
+}

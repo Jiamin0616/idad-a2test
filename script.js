@@ -1,5 +1,6 @@
 const svgNS = "http://www.w3.org/2000/svg";
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : "");
 const state = {
   bottles: [],
   selected: null,
@@ -194,6 +195,11 @@ function createBottle(opts = {}) {
 
   el.append(neck, svg, ring);
   stage.appendChild(el);
+  // small label chip (shows when selected)
+  const chip = document.createElement("div");
+  chip.className = "chip";
+  el.appendChild(chip);
+  bottle.chip = chip;
 
   // attach refs
   bottle.el = el;
@@ -245,6 +251,8 @@ function updateLiquid(b) {
   if (state.selected === b) {
     fillEl.value = b.fill;
     fillVal.textContent = Math.round(b.fill * 100) + "%";
+    if (b.chip)
+      b.chip.textContent = `${cap(b.material)} • ${Math.round(b.fill * 100)}%`;
   }
 }
 
